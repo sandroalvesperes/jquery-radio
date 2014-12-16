@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" /> 
+    <meta name="author" content="Sandro Alves Peres" />	
+    <title>JQuery Radio</title>
+    <link rel="stylesheet" href="jquery.radio.css" type="text/css" media="all" />       
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>     
+	<script type="text/javascript" src="jquery.radio.js"></script>   
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+		
+			$('input:radio[name=radio1]').radio();	
+
+			// With callback
+			$('input:radio[name=radio2]').radio({
+				callback: function()
+				{
+					alert('Working with callback, ID: ' + $(this).attr('id'));
+				}
+			});	
+			
+		});
+	</script>
+	<style media="all">
+		body {
+			margin: 50px;
+			font-family: verdana, tahoma, sans-serif;
+			font-size: 12px;
+			color: #111222;
+		}
+		
+		.title {
+			font-size: 14px;
+			font-weight: bold;
+			color: #184E76;
+		}
+		
+		.code {
+			margin-left: 30px;
+			color: #606060;
+			margin-bottom: 20px;
+		}
+		
+		.title-rule {
+			font-size: 16px;
+			font-weight: bold;
+			color: orangered;
+		}
+		
+		.rule {
+			margin-left: 30px;
+			color: #069;
+			margin-bottom: 20px;
+            line-height: 22px;
+		}		
+		
+        .comments {
+            font-style: italic;
+            color: #808080;
+        }		
+		
+		label {
+			color: #202020;
+			vertical-align: middle;
+		}
+		
+		a {
+			text-decoration: none;
+			color: #03f;
+		}
+		
+		a:hover {
+			color: orangered;
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>JQuery Radio</h1>
+	<h2>Radio Button with good visual</h2>
+	<hr size="1" color="#c0c0c0" />
+	<p>&nbsp;</p>
+	
+	<p>
+		<input type="radio" name="radio1" id="radioa" value="1" /> <label for="radioa">Radio A</label> &nbsp; &nbsp; 
+		<input type="radio" name="radio1" id="radiob" value="2" /> <label for="radiob">Radio B</label> &nbsp; &nbsp; 
+		<input type="radio" name="radio1" id="radioc" value="3" /> <label for="radioc">Radio C</label>
+	</p>
+	<p>
+		<a href="javascript:void(0);" onclick="$(':radio[name=radio1]').radio('enable');">Enable</a> - 
+		<a href="javascript:void(0);" onclick="$(':radio[name=radio1]').radio('disable');">Disable</a> -
+		<a href="javascript:void(0);" onclick="$('#radiob').radio('on');">Check (Radio B)</a> -
+		<a href="javascript:void(0);" onclick="$(':radio[name=radio1]').radio('off');">Uncheck</a>
+	</p>
+	
+	<p>&nbsp;</p>
+	
+	<p>
+		<input type="radio" name="radio2" id="radiod" value="1" /> <label for="radiod">Radio D</label> &nbsp; &nbsp; 
+		<input type="radio" name="radio2" id="radioe" value="2" /> <label for="radioe">Radio E</label> &nbsp; &nbsp; 
+		<input type="radio" name="radio2" id="radiof" value="3" /> <label for="radiof">Radio F</label>
+	</p>
+	<p>
+		<a href="javascript:void(0);" onclick="$(':radio[name=radio2]').radio('enable');">Enable</a> - 
+		<a href="javascript:void(0);" onclick="$(':radio[name=radio2]').radio('disable');">Disable</a> -
+		<a href="javascript:void(0);" onclick="$('#radiod').radio('on');">Check (Radio D)</a> -
+        <a href="javascript:void(0);" onclick="$('#radiof').radio('on');">Check (Radio F)</a> -
+		<a href="javascript:void(0);" onclick="$('#radioe').radio('off');">Uncheck</a>
+	</p>
+	
+	<p>&nbsp;</p>
+
+	<p class="title">Using selector jquery for all radio buttons</p>
+	<p>
+		<a href="javascript:void(0);" onclick="$('input:radio').radio('enable');">Enable All</a> - 
+		<a href="javascript:void(0);" onclick="$('input:radio').radio('disable');">Disable All</a> -
+		<a href="javascript:void(0);" onclick="alert('It\'s not possible to check all radio buttons!\nYou need to specify just the element ID!');">Check All</a> -
+		<a href="javascript:void(0);" onclick="$('input:radio').radio('off');">Uncheck All</a>
+	</p>
+
+	<p>&nbsp;</p>
+	
+	<p class="title">Create</p>
+	<p class="code">
+		$('input:radio').radio();	
+	</p>
+	<p class="code">
+        <span class="comments">// with options</span><br />	
+        $('input:radio').radio({
+            <br />&nbsp; &nbsp; &nbsp; &nbsp;callback: function()
+            <br />&nbsp; &nbsp; &nbsp; &nbsp;{
+            <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;alert('ID: ' + $(this).attr('id'));
+            <br />&nbsp; &nbsp; &nbsp; &nbsp;}         
+        <br />}); 
+	</p>  	
+	
+	<p class="title">Enable</p>
+	<p class="code">
+		$('input:radio').radio('enable');	
+	</p>
+
+	<p class="title">Disable</p>
+	<p class="code">
+		$('input:radio').radio('disable');
+	</p>
+
+	<p class="title">Check</p>
+	<p class="code">
+		$('input:radio').radio('on');	
+	</p>	
+	
+	<p class="title">Uncheck</p>
+	<p class="code">
+		$('input:radio').radio('off');	
+	</p>
+
+	<p>&nbsp;</p>
+	
+	<p class="title-rule">Rules</p>
+	<p class="rule">
+		- Do not include a parent type "label" for the radio element, Instead, use the attribute "for"<br />
+        - It's not possible to check all radio buttons! You need to specify just the element ID for the function "on"!<br />
+        &nbsp; &raquo; E.g: <span style="color: orangered;"> $("#id").radio("on"); </span>
+	</p>
+	
+</body>
+</html>
